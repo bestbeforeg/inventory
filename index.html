@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WareHouse</title>
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+        <header>
+        <h1>My Sample Project</h1>
+            <nav id="topMenu">
+                <button>&#9776;</button>
+                <ul>
+                    <li class="search">Search</li>
+                    <li class="inquiry">Inquiry</li>
+                    <li class="createNew">Create</li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside id="sidebar">
+        	<nav>
+        		<ul id="sideMenu"></ul>
+        	</nav>
+        </aside>
+        <main>
+            <article id="addNew">
+                <h2>Add new category</h2>
+                <div id="subcategoryInfo"></div>
+            </article>
+        	<form id="addCategory">
+                <fieldset id="catSelect">
+                    <legend>Fill in category details:</legend>
+                    <label for="catName">Enter category name</label>
+                    <input  type="text" id="catName"> <br />
+                    <label for="catId">Enter category id</label>
+                    <input  type="text" id="catId"> <br />
+                    <label for="catParent">Select parent category</label> 
+                    <select id="catParent">
+                        <option value="0" selected="selected">Select</option>
+                    </select> <br />
+                    <p>Select category type</p>
+                    <label for="catCategory">Category</label> <input type="radio" name="category" value="category" id="catCategory" checked="checked" />
+                    <label for="catCollection">Collection</label> <input type="radio" name="category" value="collection" id="catCollection" />
+                </fieldset>
+                <fieldset id="addDetails">
+                    <legend>Item details:</legend>
+                    <label for="documentIn">Document in</label> <input  type="text" id="documentIn"> <br />
+                    <label for="itemQuantity">Item quantity</label> <input  type="text" id="itemQuantity"> <br />
+                    <label for="itemPrice">Item price</label> <input  type="text" id="itemPrice"> <br />
+                    <label for="getCurrentDate">Set current date</label> <input type="checkbox" id="getCurrentDate" checked="checked"> <br />
+                    <label for="dateIn">Date in</label> <input type="text" id="dateIn" value=""> <br />
+                    <button>Add details</button>
+                    <ul id="itemList"></ul>
+                </fieldset>
+                <button>Submit</button>
+        	</form>
+
+            
+
+
+
+        </main>
+        <script src="./scripts/jquery-3.2.1.min.js"></script>
+        <script data-main="scripts/warehouse" src="./scripts/require.js"></script>
+    </body>
+</html>
