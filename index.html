@@ -8,12 +8,15 @@
         <header>
         <h1>My Sample Project</h1>
             <nav id="topMenu">
-                <button>&#9776;</button>
-                <ul>
-                    <li class="search">Search</li>
-                    <li class="inquiry">Inquiry</li>
-                    <li class="createNew">Create</li>
-                </ul>
+                <button>&#9924;</button>
+                <form id="search">
+                    <label for="searchTerm">Search</label> <input type="text" id="searchTerm" value="" /> <br />
+                    <label for="searchID">ID</label> <input type="radio" name="search" value="id" id="searchID" checked="checked" />
+                    <label for="searchName">Name</label> <input type="radio" name="search" value="name" id="searchName" />
+                    <label for="searchDocument">Document</label> <input type="radio" name="search" value="document" id="searchDocument" />
+                    <label for="searchDate">Date</label> <input type="radio" name="search" value="date" id="searchDate" />
+                    <label for="searchCounterparty">Counterparty</label> <input type="radio" name="search" value="Counterparty" id="searchCounterparty" />
+                </form>
             </nav>
         </header>
 
@@ -23,37 +26,45 @@
         	</nav>
         </aside>
         <main>
-            <article id="addNew">
+            <article id="addNew" data-id="">
                 <h2>Add new category</h2>
                 <div id="subcategoryInfo"></div>
             </article>
         	<form id="addCategory">
                 <fieldset id="catSelect">
-                    <legend>Fill in category details:</legend>
-                    <label for="catName">Enter category name</label>
-                    <input  type="text" id="catName"> <br />
-                    <label for="catId">Enter category id</label>
-                    <input  type="text" id="catId"> <br />
+                    <legend>Category details:</legend>
+                    <label for="catName">Name</label> <input  type="text" id="catName" required="required"> <br />
+                    <label for="catId">ID</label> <input  type="text" id="catId" required="required"> <br />
                     <label for="catParent">Select parent category</label> 
                     <select id="catParent">
-                        <option value="0" selected="selected">Select</option>
-                    </select> <br />
-                    <p>Select category type</p>
+                        <option value="0" selected="selected">None</option>
+                    </select>
+                </fieldset>
+                <fieldset id="catType">
+                    <legend>Select category type</legend>
                     <label for="catCategory">Category</label> <input type="radio" name="category" value="category" id="catCategory" checked="checked" />
                     <label for="catCollection">Collection</label> <input type="radio" name="category" value="collection" id="catCollection" />
                 </fieldset>
-                <fieldset id="addDetails">
+                <fieldset id="details" data-role="add">
                     <legend>Item details:</legend>
-                    <label for="documentIn">Document in</label> <input  type="text" id="documentIn"> <br />
-                    <label for="itemQuantity">Item quantity</label> <input  type="text" id="itemQuantity"> <br />
-                    <label for="itemPrice">Item price</label> <input  type="text" id="itemPrice"> <br />
+                    <label for="ingoing">Ingoing</label> <input type="radio" name="itemType" value="ingoing" id="ingoing" checked="checked" />
+                    <label for="outgoing">Outgoing</label> <input type="radio" name="itemType" value="outgoing" id="outgoing" /> <br />
+                    <label for="document">Document</label> <input  type="text" id="document"> <br />
+                    <label for="quantity">Quantity</label> <input  type="text" id="quantity"> <br />
+                    <label for="price">Price</label> <input  type="text" id="price"> <br />
                     <label for="getCurrentDate">Set current date</label> <input type="checkbox" id="getCurrentDate" checked="checked"> <br />
-                    <label for="dateIn">Date in</label> <input type="text" id="dateIn" value=""> <br />
+                    <label for="date">Date</label> <input type="text" id="date" value=""> <br />
+                    <label for="counterparty">Counterparty</label> <input  type="text" id="counterparty"> <br />
                     <button>Add details</button>
                     <ul id="itemList"></ul>
                 </fieldset>
                 <button>Submit</button>
         	</form>
+
+            <form id="edit">
+                <button class="editDelete">Delete</button>
+                <button class="editSave">Save</button>
+            </form>
 
             
 
