@@ -1,0 +1,54 @@
+#datesRange, #edit, #details, #setDate, .submenu, .searchCard, #searchResults{
+	display: none;
+}
+#addCategory input[type='text'], #edit input[type='text']{
+	display: block;
+}
+.wrapper{
+    box-sizing: border-box;
+    position: absolute;
+    right: 16px;
+}
+.searchCard, #searchResults, main, .mdl-card{
+	margin: 72px auto 24px;
+	min-height: initial;
+  overflow: initial;
+  display: block;
+}
+#edit, #addCategory{
+	padding: 16px;
+}
+.searchCard, #searchResults{
+	display: none;
+}
+.mdl-card{
+	width: 840px;
+}
+#searchResults{
+	margin-top: 0;
+}
+#sideMenu .material-icons{
+vertical-align: middle;
+}
+#sideMenu .submenu{
+	padding-left: 24px;
+}
+#sideMenu, #subcategoryInfo{
+	padding-left: 16px;
+}
+
+#sideMenu span, #sideMenu i{cursor: pointer;}
+table{
+	margin-bottom: 16px;
+}
+#searchResults ul li, #subcategoryInfo ul li{
+	cursor: pointer;
+}
+
+#searchResults .mdl-list li span{
+display: inline-block;
+margin: 0 8px 8px;
+padding: 0 8px;
+background-color: #ff4081;
+color: #fff;
+}

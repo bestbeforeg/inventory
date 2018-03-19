@@ -2,76 +2,179 @@
 <html>
     <head>
         <title>WareHouse</title>
+        <link rel="stylesheet" href="./css/material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
-        <header>
-        <h1>My Sample Project</h1>
-            <nav id="topMenu">
-                <button>&#9924;</button>
-                <form id="search">
-                    <label for="searchTerm">Search</label> <input type="text" id="searchTerm" value="" /> <br />
-                    <label for="searchID">ID</label> <input type="radio" name="search" value="id" id="searchID" checked="checked" />
-                    <label for="searchName">Name</label> <input type="radio" name="search" value="name" id="searchName" />
-                    <label for="searchDocument">Document</label> <input type="radio" name="search" value="document" id="searchDocument" />
-                    <label for="searchDate">Date</label> <input type="radio" name="search" value="date" id="searchDate" />
-                    <label for="searchCounterparty">Counterparty</label> <input type="radio" name="search" value="Counterparty" id="searchCounterparty" />
+        <div id="wrapper" class="mdl-layout mdl-js-layout">
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="mdl-layout__header-row">
+                        <span class="mdl-layout-title">Inventory App</span>
+                        <div class="wrapper">
+                            <button id="topMenu" class="mdl-button mdl-js-button mdl-button--icon">
+                              <i class="material-icons">more_vert</i>
+                            </button>
+                            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="topMenu">
+                              <li class="start mdl-menu__item">Add New</li>
+                              <li class="showSearch mdl-menu__item">Search</li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <div class="mdl-layout__drawer">
+                    <span class="mdl-layout-title">Categories</span>
+                    <nav id="sidebar" class="mdl-navigation">
+                      <ul id="sideMenu" class="mdl-list"></ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="searchCard mdl-card mdl-shadow--2dp mdl-animation--default">
+              <div class="mdl-card__title">
+                <h4 class="mdl-card__title-text">Search</h4>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <form id="search" action="#">
+                    <label for="searchID" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" name="search" value="id" id="searchID" class="mdl-radio__button" checked="checked" />
+                        <span class="mdl-radio__label">By ID</span>
+                    </label><br>
+                    <label for="searchName" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" name="search" value="name" id="searchName" class="mdl-radio__button" />
+                        <span class="mdl-radio__label">By name</span>
+                    </label><br>
+                    <label for="searchDocument" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" name="search" value="document" id="searchDocument" class="mdl-radio__button" />
+                        <span class="mdl-radio__label">By document</span>
+                     </label><br>
+                    <label for="searchCounterparty" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                        <input type="radio" name="search" value="counterparty" id="searchCounterparty" class="mdl-radio__button" />
+                        <span class="mdl-radio__label">By counterparty</span>
+                    </label> <br />
+                    <label for="searchDate" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                        <input type="checkbox" value="date" id="searchDate" class="mdl-switch__input" />
+                        <span class="mdl-switch__label">Set date range</span>
+                    </label><br>
+                    <fieldset id="datesRange">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text"  id="dateFrom">
+                            <label class="mdl-textfield__label" for="dateFrom">Date from</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text"  id="dateTo">
+                            <label class="mdl-textfield__label" for="dateTo">Date to</label>
+                        </div>
+                    </fieldset>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="searchTerm" >
+                          <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                          <input class="mdl-textfield__input" type="text" id="searchTerm">
+                          <label class="mdl-textfield__label" for="sample-expandable">Search</label>
+                        </div>
+                    </div> <br>
                 </form>
-            </nav>
-        </header>
+              </div>
+            </div>
 
-        <aside id="sidebar">
-        	<nav>
-        		<ul id="sideMenu"></ul>
-        	</nav>
-        </aside>
-        <main>
-            <article id="addNew" data-id="">
-                <h2>Add new category</h2>
-                <div id="subcategoryInfo"></div>
-            </article>
-        	<form id="addCategory">
-                <fieldset id="catSelect">
-                    <legend>Category details:</legend>
-                    <label for="catName">Name</label> <input  type="text" id="catName" required="required"> <br />
-                    <label for="catId">ID</label> <input  type="text" id="catId" required="required"> <br />
-                    <label for="catParent">Select parent category</label> 
-                    <select id="catParent">
-                        <option value="0" selected="selected">None</option>
-                    </select>
-                </fieldset>
-                <fieldset id="catType">
-                    <legend>Select category type</legend>
-                    <label for="catCategory">Category</label> <input type="radio" name="category" value="category" id="catCategory" checked="checked" />
-                    <label for="catCollection">Collection</label> <input type="radio" name="category" value="collection" id="catCollection" />
-                </fieldset>
-                <fieldset id="details" data-role="add">
-                    <legend>Item details:</legend>
-                    <label for="ingoing">Ingoing</label> <input type="radio" name="itemType" value="ingoing" id="ingoing" checked="checked" />
-                    <label for="outgoing">Outgoing</label> <input type="radio" name="itemType" value="outgoing" id="outgoing" /> <br />
-                    <label for="document">Document</label> <input  type="text" id="document"> <br />
-                    <label for="quantity">Quantity</label> <input  type="text" id="quantity"> <br />
-                    <label for="price">Price</label> <input  type="text" id="price"> <br />
-                    <label for="getCurrentDate">Set current date</label> <input type="checkbox" id="getCurrentDate" checked="checked"> <br />
-                    <label for="date">Date</label> <input type="text" id="date" value=""> <br />
-                    <label for="counterparty">Counterparty</label> <input  type="text" id="counterparty"> <br />
-                    <button>Add details</button>
-                    <ul id="itemList"></ul>
-                </fieldset>
-                <button>Submit</button>
-        	</form>
-
-            <form id="edit">
-                <button class="editDelete">Delete</button>
-                <button class="editSave">Save</button>
-            </form>
-
-            
+            <div id="searchResults" class="mdl-card mdl-shadow--2dp">
+               <div class="mdl-card__title">
+                <h4 class="mdl-card__title-text">Search results</h4>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <ul class="mdl-list"></ul>
+              </div>
+            </div>
 
 
+            <main class="main mdl-card mdl-shadow--2dp">
+                <article id="addNew" data-id="">
+                    <div class="mdl-card__title">
+                        <h4 class="mdl-card__title-text">Create new category</h4>
+                    </div>    
+                    <div id="subcategoryInfo"></div>
+                </article>
+            	<form id="addCategory">
+                    <fieldset id="catSelect">
+                        <legend>Category details:</legend>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="catName" required="required">
+                            <label class="mdl-textfield__label" for="catName">Name</label>
+                        </div> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="catId" required="required">
+                            <label class="mdl-textfield__label" for="catId">ID</label>
+                        </div> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select class="mdl-textfield__input" id="catParent">
+                              <option value="0" selected="selected">None</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="octane">Select parent category</label>
+                        </div> <br>
+                    </fieldset>
+                    <fieldset id="catType">
+                        <legend>Select category type</legend>
+                        <label for="catCategory" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" name="category" value="category" id="catCategory" class="mdl-radio__button" checked="checked" />
+                            <span class="mdl-radio__label">Category</span>
+                        </label> <br>
+                        <label for="catCollection" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" name="category" value="counterparty" id="catCollection" class="mdl-radio__button" />
+                            <span class="mdl-radio__label">Collection</span>
+                        </label> <br> <br>
+                    </fieldset>
+                    <fieldset id="details" data-role="add">
+                        <legend>Item details:</legend>
+                        <label for="ingoing" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" name="itemType" value="ingoing" id="ingoing" class="mdl-radio__button" checked="checked" />
+                            <span class="mdl-radio__label">Ingoing</span>
+                        </label> <br>
+                        <label for="outgoing" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                            <input type="radio" name="itemType" value="outgoing" id="outgoing" class="mdl-radio__button" />
+                            <span class="mdl-radio__label">Outgoing</span>
+                        </label> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="document">
+                            <label class="mdl-textfield__label" for="document">Document</label>
+                        </div> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="quantity">
+                            <label class="mdl-textfield__label" for="quantity">Quantity</label>
+                        </div> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="price">
+                            <label class="mdl-textfield__label" for="price">Price</label>
+                        </div> <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="counterparty">
+                            <label class="mdl-textfield__label" for="counterparty">Counterparty</label>
+                        </div> <br>
+                        <label for="getCurrentDate" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                            <input type="checkbox" id="getCurrentDate" class="mdl-switch__input" checked="checked"/>
+                            <span class="mdl-switch__label">Set current date</span>
+                        </label> <br>
 
-        </main>
-        <script src="./scripts/jquery-3.2.1.min.js"></script>
-        <script data-main="scripts/warehouse" src="./scripts/require.js"></script>
+                        <div id="setDate" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input type="text" value="" id="date" class="mdl-textfield__input">
+                            <label class="mdl-textfield__label" for="date">Date</label>
+                        </div> <br> <br>                     
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Add details</button>
+                        <ul id="itemList" class="mdl-list__item"></ul>
+                    </fieldset> <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Create</button>
+            	</form>
+
+                <form id="edit">
+                    <button class="editSave mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Save</button>
+                    <button class="editDelete mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Delete</button>
+                </form>
+            </main>
+        </div>
+        <script src="js/lib/jquery-3.2.1.min.js" deter></script>
+        <script src="js/lib/material.min.js" deter></script>
+        <script data-main="js/app.js" src="js/lib/require.js" deter></script>
     </body>
 </html>

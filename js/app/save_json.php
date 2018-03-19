@@ -1,5 +1,5 @@
 <?php
-$myFile = "./scripts/app/inventory.json";
+$myFile = "./inventory.json";
 $fh = fopen($myFile, 'w') or die("can't open file");
 $stringData = $_POST["data"];
 fwrite($fh, $stringData);
