@@ -1,0 +1,3 @@
+- refacture code
+- modulate code
+- replace json data with proper database
